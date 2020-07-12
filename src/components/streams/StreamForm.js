@@ -29,12 +29,26 @@ class StreamForm extends React.Component {
   };
 
   render() {
+    let title = null;
+    let description = null;
+
+    if (this.props.initialValues) {
+      title = this.props.initialValues.title;
+      description = this.props.initialValues.description.description;
+    }
+
     return (
       <form
         onSubmit={this.props.handleSubmit(this.onSubmit)}
         className="ui form error">
-        <Field label="Enter Title" name="title" component={this.renderInput} />
         <Field
+          value={title}
+          label="Enter Title"
+          name="title"
+          component={this.renderInput}
+        />
+        <Field
+          value={description}
           label="Enter Description"
           name="description"
           component={this.renderInput}
